@@ -1,0 +1,481 @@
+{
+  "python": "3.15.0rc2 (main, Sep  1 2026, 14:05:48) [Clang 22.1.3 ]",
+  "reps": 7,
+  "packages": 26,
+  "broken_under_lazy_all": [
+    "pandas",
+    "polars",
+    "sqlalchemy",
+    "orjson"
+  ],
+  "rows": [
+    {
+      "package": "numpy",
+      "eager": {
+        "min_ms": 49.06,
+        "median_ms": 49.76,
+        "modules": 178,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 40.19,
+        "median_ms": 40.7,
+        "modules": 129,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.22
+    },
+    {
+      "package": "pandas",
+      "eager": {
+        "min_ms": 196.74,
+        "median_ms": 202.62,
+        "modules": 598,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 74.78,
+        "median_ms": 76.07,
+        "modules": null,
+        "ok": false,
+        "error": "ImportError: numpy._core.multiarray failed to import"
+      },
+      "speedup": null
+    },
+    {
+      "package": "polars",
+      "eager": {
+        "min_ms": 86.79,
+        "median_ms": 90.24,
+        "modules": 327,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 38.83,
+        "median_ms": 39.7,
+        "modules": null,
+        "ok": false,
+        "error": "ImportCycleError: cannot import name 'polars.exceptions' (most likely due to a circular import)"
+      },
+      "speedup": null
+    },
+    {
+      "package": "duckdb",
+      "eager": {
+        "min_ms": 54.54,
+        "median_ms": 56.2,
+        "modules": 152,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 35.82,
+        "median_ms": 36.17,
+        "modules": 63,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.52
+    },
+    {
+      "package": "requests",
+      "eager": {
+        "min_ms": 67.96,
+        "median_ms": 69.38,
+        "modules": 320,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 44.42,
+        "median_ms": 44.91,
+        "modules": 146,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.53
+    },
+    {
+      "package": "httpx",
+      "eager": {
+        "min_ms": 76.91,
+        "median_ms": 79.37,
+        "modules": 291,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 42.07,
+        "median_ms": 43.29,
+        "modules": 126,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.83
+    },
+    {
+      "package": "pydantic",
+      "eager": {
+        "min_ms": 53.49,
+        "median_ms": 54.16,
+        "modules": 153,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 40.41,
+        "median_ms": 40.83,
+        "modules": 102,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.32
+    },
+    {
+      "package": "sqlalchemy",
+      "eager": {
+        "min_ms": 109.68,
+        "median_ms": 110.82,
+        "modules": 285,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 71.55,
+        "median_ms": 73.38,
+        "modules": null,
+        "ok": false,
+        "error": "RuntimeError: Set changed size during iteration"
+      },
+      "speedup": null
+    },
+    {
+      "package": "flask",
+      "eager": {
+        "min_ms": 83.0,
+        "median_ms": 86.57,
+        "modules": 301,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 48.65,
+        "median_ms": 51.56,
+        "modules": 157,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.71
+    },
+    {
+      "package": "fastapi",
+      "eager": {
+        "min_ms": 138.94,
+        "median_ms": 140.87,
+        "modules": 325,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 72.97,
+        "median_ms": 73.55,
+        "modules": 176,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.9
+    },
+    {
+      "package": "starlette",
+      "eager": {
+        "min_ms": 43.47,
+        "median_ms": 45.02,
+        "modules": 173,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 21.17,
+        "median_ms": 23.45,
+        "modules": 65,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 2.05
+    },
+    {
+      "package": "rich",
+      "eager": {
+        "min_ms": 30.28,
+        "median_ms": 30.45,
+        "modules": 126,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 25.6,
+        "median_ms": 25.98,
+        "modules": 85,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.18
+    },
+    {
+      "package": "click",
+      "eager": {
+        "min_ms": 27.25,
+        "median_ms": 28.29,
+        "modules": 96,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 21.19,
+        "median_ms": 21.31,
+        "modules": 62,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.29
+    },
+    {
+      "package": "jinja2",
+      "eager": {
+        "min_ms": 39.97,
+        "median_ms": 40.84,
+        "modules": 142,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 28.74,
+        "median_ms": 29.22,
+        "modules": 84,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.39
+    },
+    {
+      "package": "yaml",
+      "eager": {
+        "min_ms": 22.07,
+        "median_ms": 22.46,
+        "modules": 77,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 21.95,
+        "median_ms": 22.54,
+        "modules": 73,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.01
+    },
+    {
+      "package": "boto3",
+      "eager": {
+        "min_ms": 102.61,
+        "median_ms": 105.39,
+        "modules": 405,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 46.12,
+        "median_ms": 46.99,
+        "modules": 140,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 2.22
+    },
+    {
+      "package": "PIL.Image",
+      "eager": {
+        "min_ms": 35.17,
+        "median_ms": 35.5,
+        "modules": 124,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 23.97,
+        "median_ms": 24.13,
+        "modules": 68,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.47
+    },
+    {
+      "package": "lxml.etree",
+      "eager": {
+        "min_ms": 27.39,
+        "median_ms": 27.88,
+        "modules": 86,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 26.34,
+        "median_ms": 26.57,
+        "modules": 76,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.04
+    },
+    {
+      "package": "cryptography.fernet",
+      "eager": {
+        "min_ms": 23.74,
+        "median_ms": 24.02,
+        "modules": 83,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 21.18,
+        "median_ms": 21.93,
+        "modules": 61,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.12
+    },
+    {
+      "package": "bs4",
+      "eager": {
+        "min_ms": 50.58,
+        "median_ms": 51.35,
+        "modules": 156,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 32.39,
+        "median_ms": 32.53,
+        "modules": 91,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.56
+    },
+    {
+      "package": "orjson",
+      "eager": {
+        "min_ms": 20.06,
+        "median_ms": 20.22,
+        "modules": 71,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 29.02,
+        "median_ms": 29.62,
+        "modules": null,
+        "ok": false,
+        "error": "SystemError: execution of module <module 'orjson.orjson' from '/Users/nazmul/pp/bench-lazy-imports/.venv/lib/python3.15/site-packages/orjson/orjson.cpython-315-"
+      },
+      "speedup": null
+    },
+    {
+      "package": "msgspec",
+      "eager": {
+        "min_ms": 26.94,
+        "median_ms": 27.99,
+        "modules": 97,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 25.2,
+        "median_ms": 26.14,
+        "modules": 81,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.07
+    },
+    {
+      "package": "tqdm",
+      "eager": {
+        "min_ms": 68.51,
+        "median_ms": 69.26,
+        "modules": 202,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 46.2,
+        "median_ms": 46.66,
+        "modules": 110,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.48
+    },
+    {
+      "package": "loguru",
+      "eager": {
+        "min_ms": 51.32,
+        "median_ms": 51.44,
+        "modules": 208,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 28.02,
+        "median_ms": 28.28,
+        "modules": 93,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.83
+    },
+    {
+      "package": "structlog",
+      "eager": {
+        "min_ms": 72.99,
+        "median_ms": 74.53,
+        "modules": 278,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 41.14,
+        "median_ms": 41.45,
+        "modules": 125,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.77
+    },
+    {
+      "package": "anyio",
+      "eager": {
+        "min_ms": 28.88,
+        "median_ms": 29.43,
+        "modules": 98,
+        "ok": true,
+        "error": null
+      },
+      "lazy_all": {
+        "min_ms": 25.4,
+        "median_ms": 25.52,
+        "modules": 78,
+        "ok": true,
+        "error": null
+      },
+      "speedup": 1.14
+    }
+  ]
+}
