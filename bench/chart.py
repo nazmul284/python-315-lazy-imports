@@ -81,3 +81,61 @@ fig.subplots_adjust(left=0.215, right=0.985, top=0.825, bottom=0.15)
 out = ROOT / "results" / "startup.png"
 fig.savefig(out, facecolor=SURFACE)
 print("wrote", out)
+
+
+# --------------------------------------------------- figure 2: the sweep
+S = json.loads((ROOT / "results" / "sweep.json").read_text())
+rows = sorted(S["rows"], key=lambda r: r["eager"]["min_ms"])
+
+fig2, ax2 = plt.subplots(figsize=(8.6, 6.4), dpi=200)
+fig2.patch.set_facecolor(SURFACE); ax2.set_facecolor(SURFACE)
+
+y2 = range(len(rows))
+ok = [r for r in rows if r["lazy_all"]["ok"]]
+ax2.barh([i for i, r in enumerate(rows)], [r["eager"]["min_ms"] for r in rows],
+         height=0.66, color="#d8d7d0", zorder=2, label="eager import")
+ax2.barh([i for i, r in enumerate(rows)], [r["lazy_all"]["min_ms"] for r in rows],
+         height=0.66, zorder=3,
+         color=[BLUE if r["lazy_all"]["ok"] else CRITICAL for r in rows],
+         hatch=["" if r["lazy_all"]["ok"] else "///" for r in rows],
+         edgecolor=SURFACE, linewidth=0)
+
+for i, r in enumerate(rows):
+    # anchor past whichever bar is longer: orjson is slower under lazy mode
+    end = max(r["eager"]["min_ms"], r["lazy_all"]["min_ms"]) + 4
+    if r["lazy_all"]["ok"]:
+        ax2.text(end, i, f"{r['speedup']:.2f}x", va="center", fontsize=8,
+                 color=MUTED, zorder=5)
+    else:
+        ax2.text(end, i, "crashes on first use", va="center", fontsize=8,
+                 color=CRITICAL, weight="bold", zorder=5)
+
+ax2.set_yticks(list(y2))
+ax2.set_yticklabels([r["package"] for r in rows], fontsize=8.5, color=INK)
+ax2.set_ylim(-0.8, len(rows) - 0.2)
+ax2.set_xlim(0, 300)
+ax2.set_xlabel("import and first call, milliseconds (minimum of 7 runs)",
+               fontsize=9, color=MUTED, labelpad=8)
+ax2.tick_params(axis="x", colors=MUTED, labelsize=8.5, length=0)
+ax2.tick_params(axis="y", length=0)
+ax2.xaxis.grid(True, color=GRID, lw=0.8, zorder=0)
+ax2.set_axisbelow(True)
+for side in ("top", "right", "bottom"):
+    ax2.spines[side].set_visible(False)
+ax2.spines["left"].set_color(AXIS)
+
+h2 = [plt.Rectangle((0, 0), 1, 1, color=c) for c in ("#d8d7d0", BLUE, CRITICAL)]
+ax2.legend(h2, ["eager import", "-X lazy_imports=all, works",
+                "-X lazy_imports=all, crashed (hatched)"],
+           loc="lower right", frameon=False, fontsize=8.5, labelcolor=MUTED,
+           handlelength=1.1, handleheight=1.1, borderpad=0.2)
+
+fig2.text(0.035, 0.955, "26 installed packages under Python 3.15's global lazy mode",
+          fontsize=14, color=INK, ha="left", va="center", weight="bold")
+fig2.text(0.035, 0.918, "Each package imported and then called. Four import cleanly "
+          "and raise on the first real call.", fontsize=9.2, color=MUTED,
+          ha="left", va="center")
+fig2.subplots_adjust(left=0.175, right=0.985, top=0.885, bottom=0.10)
+out2 = ROOT / "results" / "sweep.png"
+fig2.savefig(out2, facecolor=SURFACE)
+print("wrote", out2)
